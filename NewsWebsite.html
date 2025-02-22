@@ -42,6 +42,7 @@
             width: 22%;
             text-align: center;
             margin-right: 10px;
+            transition: background-color 0.3s ease;
         }
         .headlines .headline:last-child {
             margin-right: 0;
@@ -65,21 +66,20 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-            display: flex; /* This makes the image and text side-by-side */
-            flex-direction: row; /* Default: horizontal alignment */
-            align-items: flex-start; /* Align items to the top */
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
         }
 
-        /* Image styling */
         .news img {
-            width: 40%; /* Adjust image size */
+            width: 40%;
             border-radius: 8px;
-            margin-right: 20px; /* Space between image and text */
+            margin-right: 20px;
         }
 
-        /* Text container styling */
         .news .content {
-            width: 55%; /* Give the text some space */
+            width: 55%;
         }
 
         .news h2 {
@@ -102,6 +102,18 @@
         }
         ul li, ol li {
             margin-bottom: 5px;
+        }
+
+        /* Hover effect for the .news items */
+        .news:hover {
+            background-color: #f4f4f4; /* Light gray background on hover */
+            transform: scale(1.02); /* Slightly increase size */
+        }
+
+        /* Add active class for clicked state */
+        .news.active {
+            background-color: #c70039; /* Red color when clicked */
+            color: white; /* Text color change */
         }
 
         .register-form {
@@ -161,7 +173,7 @@
         </div>
 
         <!-- Content for each headline -->
-        <div class="news">
+        <div class="news" onclick="toggleActive(this)">
             <img src="image.jpeg" alt="Cultural Festival">
             <div class="content">
                 <h2>City Hosts Grand Cultural Festival</h2>
@@ -176,7 +188,7 @@
             </div>
         </div>
 
-        <div class="news">
+        <div class="news" onclick="toggleActive(this)">
             <img src="download.jpeg" alt="Political Shift">
             <div class="content">
                 <h2>Breaking News: Major Political Shift</h2>
@@ -190,7 +202,7 @@
             </div>
         </div>
 
-        <div class="news">
+        <div class="news" onclick="toggleActive(this)">
             <img src="sports.jpeg" alt="Sports Championship">
             <div class="content">
                 <h2>Sports: Local Team Wins Championship</h2>
@@ -204,7 +216,7 @@
             </div>
         </div>
 
-        <div class="news">
+        <div class="news" onclick="toggleActive(this)">
             <img src="festival.jpeg" alt="Festival Season">
             <div class="content">
                 <h2>Festival Season Brings Joy to the City</h2>
@@ -222,10 +234,16 @@
     </div>
     <footer>&copy; 2025 My News Hub | All Rights Reserved</footer>
     <script>
+        // Toggle active class on news click
+        function toggleActive(element) {
+            element.classList.toggle('active');
+        }
+
         function showRegisterForm() {
             document.getElementById('register').style.display = 'block';
             document.querySelector('.read-more').style.display = 'none';
         }
+
         function submitForm() {
             alert("Registration Successful!");
             document.getElementById('register').style.display = 'none';
@@ -233,3 +251,4 @@
     </script>
 </body>
 </html>
+
