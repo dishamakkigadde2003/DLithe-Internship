@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My News Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+        .header {
+            background: linear-gradient(to right, #ff5733, #c70039);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-bottom: 5px solid #900c3f;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        /* Flex container for headlines (only titles) */
+        .headlines {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .headline {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            width: 22%;
+            text-align: center;
+            margin-right: 10px;
+        }
+        .headlines .headline:last-child {
+            margin-right: 0;
+        }
+        .headline h2 {
+            color: #222;
+            font-size: 20px;
+            margin: 0;
+        }
+        .headline p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        /* Flexbox layout for content beside image */
+        .news {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex; /* This makes the image and text side-by-side */
+            flex-direction: row; /* Default: horizontal alignment */
+            align-items: flex-start; /* Align items to the top */
+        }
+
+        /* Image styling */
+        .news img {
+            width: 40%; /* Adjust image size */
+            border-radius: 8px;
+            margin-right: 20px; /* Space between image and text */
+        }
+
+        /* Text container styling */
+        .news .content {
+            width: 55%; /* Give the text some space */
+        }
+
+        .news h2 {
+            color: #222;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .news p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* Styling for lists */
+        ul, ol {
+            margin-top: 10px;
+            margin-left: 20px;
+            color: #555;
+        }
+        ul li, ol li {
+            margin-bottom: 5px;
+        }
+
+        .register-form {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .register-form input, .register-form button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .register-form button {
+            background: #900c3f;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .register-form button:hover {
+            background: #c70039;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">My News Hub</div>
+    <div class="container">
+        <div class="headlines">
+            <div class="headline">
+                <h2>City Hosts Grand Cultural Festival</h2>
+            </div>
+            <div class="headline">
+                <h2>Breaking News: Major Political Shift</h2>
+            </div>
+            <div class="headline">
+                <h2>Sports: Local Team Wins Championship</h2>
+            </div>
+            <div class="headline">
+                <h2>Festival Season Brings Joy to the City</h2>
+            </div>
+        </div>
+
+        <!-- Content for each headline -->
+        <div class="news">
+            <img src="image.jpeg" alt="Cultural Festival">
+            <div class="content">
+                <h2>City Hosts Grand Cultural Festival</h2>
+                <p>The city is buzzing with excitement as the annual cultural festival kicks off this weekend. Attendees can enjoy various cultural performances, art exhibitions, food stalls, and interactive workshops.</p>
+                <h3>Event Highlights:</h3>
+                <ul>
+                    <li>Cultural Performances</li>
+                    <li>Art Exhibitions</li>
+                    <li>Interactive Workshops</li>
+                    <li>Food Stalls</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="news">
+            <img src="download.jpeg" alt="Political Shift">
+            <div class="content">
+                <h2>Breaking News: Major Political Shift</h2>
+                <p>The nation witnesses a historic political shift as leaders announce significant policy changes aimed at economic growth and social welfare. Experts believe these changes will impact millions.</p>
+                <h3>Key Changes:</h3>
+                <ol>
+                    <li>New Taxation Policies</li>
+                    <li>Healthcare Reform</li>
+                    <li>Educational Investments</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="news">
+            <img src="sports.jpeg" alt="Sports Championship">
+            <div class="content">
+                <h2>Sports: Local Team Wins Championship</h2>
+                <p>The home team secured a thrilling victory in the finals, marking a memorable moment for fans. After a season full of intense matches, the team demonstrated outstanding teamwork and determination.</p>
+                <h3>Celebration Events:</h3>
+                <ul>
+                    <li>Victory Parade</li>
+                    <li>City-Wide Celebrations</li>
+                    <li>Fan Meet & Greet</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="news">
+            <img src="festival.jpeg" alt="Festival Season">
+            <div class="content">
+                <h2>Festival Season Brings Joy to the City</h2>
+                <p>People gather in large numbers to celebrate the grand festivities with music, food, and fireworks. This year’s festival features street performances, cultural parades, and special discounts in local markets.</p>
+            </div>
+        </div>
+
+        <button class="read-more" onclick="showRegisterForm()">Read More</button>
+        <div id="register" class="register-form">
+            <h2>Register to Stay Updated</h2>
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email" required>
+            <button onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+    <footer>&copy; 2025 My News Hub | All Rights Reserved</footer>
+    <script>
+        function showRegisterForm() {
+            document.getElementById('register').style.display = 'block';
+            document.querySelector('.read-more').style.display = 'none';
+        }
+        function submitForm() {
+            alert("Registration Successful!");
+            document.getElementById('register').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
