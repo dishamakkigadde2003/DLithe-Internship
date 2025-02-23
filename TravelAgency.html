@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Agency</title>
+    <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
+    <style>
+        /* Internal CSS */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #eef2f3;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s ease;
+        }
+        .header {
+            background: linear-gradient(to right, #0077b6, #00b4d8);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 34px;
+            font-weight: bold;
+            transition: background 0.5s ease;
+        }
+        .header:active {
+            background: linear-gradient(to right, #005f87, #009ac9);
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 25px;
+        }
+        .intro {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-bottom: 25px;
+            border-left: 5px solid #00b4d8;
+            transition: background-color 0.3s ease, border-left 0.3s ease;
+        }
+        .intro:active {
+            background-color: #f0f8ff;
+            border-left: 5px solid #0077b6;
+        }
+        .destination-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .destination {
+            width: 45%;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 5px solid #0077b6;
+            transition: background-color 0.3s ease, transform 0.3s ease, border-bottom 0.3s ease;
+            cursor: pointer;
+        }
+        .destination:hover {
+            transform: scale(1.03);
+            background-color: #f0f8ff;
+        }
+        .destination:active {
+            background-color: #d0ebff;
+            border-bottom: 5px solid #005f87;
+        }
+        .destination img {
+            width: 100%; /* Make the image take up the full width of the container */
+            height: 250px; /* Set a fixed height for all images */
+            object-fit: cover; /* Ensure the image covers the area without stretching */
+            border-radius: 7px;
+            transition: transform 0.3s ease;
+        }
+        .destination img:hover {
+            transform: scale(1.05);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+        }
+        table tr:hover {
+            background-color: #f5f5f5;
+        }
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 16px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        table th {
+            background-color: #0077b6;
+            color: white;
+        }
+        /* Registration Section & Read More Button Styles */
+        #registrationSection {
+            display: none;
+            margin: 20px auto;
+            width: 90%;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease;
+        }
+        #readMore {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #readMore:hover {
+            background-color: #d0ebff;
+        }
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #004e7c;
+            color: white;
+            margin-top: 25px;
+            transition: background-color 0.3s ease;
+        }
+        footer:active {
+            background-color: #00375c;
+        }
+    </style>
+</head>
+<body style="background-color: #eef2f3;">
+    <div class="header">Travel Agency - Your Adventure Begins Here</div>
+    <div class="container">
+        <div class="intro">
+            <p>Welcome to Travel Agency, where we craft the perfect travel experience just for you. Explore breathtaking landscapes, vibrant cities, and hidden gems across the world. Let’s make unforgettable memories together!</p>
+        </div>
+        <div class="destination-grid">
+            <div class="destination">
+                <img src="California.jpeg" alt="California">
+                <h2>California</h2>
+                <p>Golden beaches, vibrant cities, and stunning national parks await you in the Golden State.</p>
+            </div>
+            <div class="destination">
+                <img src="florida.jpeg" alt="Florida">
+                <h2>Florida</h2>
+                <p>Sunshine, theme parks, and breathtaking coastlines make Florida a must-visit destination.</p>
+            </div>
+            <div class="destination">
+                <img src="Paris.jpeg" alt="Paris">
+                <h2>Paris</h2>
+                <p>Experience the romance of Paris with its iconic landmarks, museums, and world-class cuisine.</p>
+            </div>
+            <div class="destination">
+                <img src="Bali.jpeg" alt="Bali">
+                <h2>Bali</h2>
+                <p>A tropical paradise known for its beaches, temples, and stunning natural beauty.</p>
+            </div>
+        </div>
+        <table>
+            <tr>
+                <th>Destination</th>
+                <th>Country</th>
+                <th>Starting Price</th>
+            </tr>
+            <tr>
+                <td>California</td>
+                <td>USA</td>
+                <td>$1250</td>
+            </tr>
+            <tr>
+                <td>Florida</td>
+                <td>USA</td>
+                <td>$1550</td>
+            </tr>
+            <tr>
+                <td>Paris</td>
+                <td>France</td>
+                <td>$1850</td>
+            </tr>
+            <tr>
+                <td>Bali</td>
+                <td>Indonesia</td>
+                <td>$1350</td>
+            </tr>
+        </table>
+        <!-- Read More Button -->
+        <button id="readMore">Read More</button>
+        <!-- Registration Form -->
+        <div id="registrationSection">
+            <h2>Register Now</h2>
+            <form id="regForm">
+                <div style="margin-bottom: 15px;">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <footer>&copy; 2025 Travel Agency | Explore, Dream, Discover</footer>
+
+    <script>
+        // Show registration form when "Read More" is clicked
+        document.getElementById('readMore').addEventListener('click', function() {
+            document.getElementById('registrationSection').style.display = 'block';
+            this.style.display = 'none';
+        });
+
+        // When the registration form is submitted, prevent default action,
+        // display an alert, and hide the registration form.
+        document.getElementById('regForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent actual form submission
+            document.getElementById('registrationSection').style.display = 'none';
+            alert('Registration Successful! Returning to main page.');
+            // Optionally, reset form fields:
+            this.reset();
+        });
+    </script>
+</body>
+</html>
