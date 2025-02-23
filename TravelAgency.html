@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Agency</title>
     <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
     <style>
@@ -102,6 +104,49 @@
             background-color: #0077b6;
             color: white;
         }
+        /* Custom Styles for Lists */
+        ul {
+            list-style-type: none; /* Remove default bullets */
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            position: relative;
+            padding-left: 30px; /* Space for custom bullet */
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+        ul li::before {
+            content: "✔"; /* Use a check mark as custom bullet */
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 20px;
+            color: #00b4d8;
+        }
+        ol {
+            padding-left: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+        ol li {
+            margin-bottom: 12px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+        ol li::marker {
+            font-size: 18px;
+            color: #00b4d8; /* Custom color for numbers */
+        }
+        /* Hover Effect on List Items */
+        ul li:hover, ol li:hover {
+            background-color: #d0ebff;
+            transition: background-color 0.3s ease;
+        }
+
         /* Registration Section & Read More Button Styles */
         #registrationSection {
             display: none;
@@ -137,12 +182,25 @@
         }
     </style>
 </head>
-<body style="background-color: #eef2f3;">
+<body>
     <div class="header">Travel Agency - Your Adventure Begins Here</div>
     <div class="container">
         <div class="intro">
             <p>Welcome to Travel Agency, where we craft the perfect travel experience just for you. Explore breathtaking landscapes, vibrant cities, and hidden gems across the world. Let’s make unforgettable memories together!</p>
         </div>
+        
+        <!-- Unordered List (Things to Bring) -->
+        <div class="intro">
+            <h3>Things to Bring on Your Trip</h3>
+            <ul>
+                <li>Comfortable walking shoes</li>
+                <li>Sunscreen</li>
+                <li>Camera</li>
+                <li>Travel adapter</li>
+                <li>Snacks</li>
+            </ul>
+        </div>
+
         <div class="destination-grid">
             <div class="destination">
                 <img src="California.jpeg" alt="California">
@@ -165,6 +223,19 @@
                 <p>A tropical paradise known for its beaches, temples, and stunning natural beauty.</p>
             </div>
         </div>
+
+        <!-- Ordered List (Travel Tips) -->
+        <div class="intro">
+            <h3>Top Travel Tips</h3>
+            <ol>
+                <li>Plan your trip well in advance for the best deals.</li>
+                <li>Learn a few basic phrases of the local language.</li>
+                <li>Pack light and bring versatile clothing.</li>
+                <li>Always have a backup power bank for your devices.</li>
+                <li>Stay hydrated and take breaks during long sightseeing tours.</li>
+            </ol>
+        </div>
+
         <table>
             <tr>
                 <th>Destination</th>
@@ -192,8 +263,10 @@
                 <td>$1350</td>
             </tr>
         </table>
+
         <!-- Read More Button -->
         <button id="readMore">Read More</button>
+
         <!-- Registration Form -->
         <div id="registrationSection">
             <h2>Register Now</h2>
