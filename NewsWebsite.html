@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My News Hub</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -12,6 +11,7 @@
             padding: 0;
             background-color: black;
         }
+
         .header {
             background: linear-gradient(to right, #ff5733, #c70039);
             color: white;
@@ -22,36 +22,39 @@
             letter-spacing: 2px;
             border-bottom: 5px solid #900c3f;
         }
+
         .container {
             width: 80%;
             margin: auto;
             padding: 20px;
         }
-        /* Flex container for headlines (only titles) */
+
         .headlines {
             display: flex;
             justify-content: space-between;
             margin-bottom: 30px;
         }
+
         .headline {
             background: white;
             padding: 15px;
             border-radius: 10px;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
             width: 22%;
             text-align: center;
             margin-right: 10px;
-            transition: background-color 0.3s ease;
         }
+
         .headlines .headline:last-child {
             margin-right: 0;
         }
+
         .headline h2 {
             color: #222;
             font-size: 20px;
             margin: 0;
         }
+
         .headline p {
             color: #555;
             font-size: 14px;
@@ -59,7 +62,6 @@
             margin-top: 10px;
         }
 
-        /* Flexbox layout for content beside image */
         .news {
             background: white;
             margin: 20px 0;
@@ -69,7 +71,8 @@
             display: flex;
             flex-direction: row;
             align-items: flex-start;
-            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+            position: relative;
+            cursor: pointer;
         }
 
         .news img {
@@ -94,44 +97,58 @@
             line-height: 1.8;
         }
 
-        /* Styling for lists */
         ul, ol {
             margin-top: 10px;
             margin-left: 20px;
             color: #555;
         }
+
         ul li, ol li {
             margin-bottom: 5px;
         }
 
-        /* Hover effect for the .news items */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+            margin-top: 20px;
+        }
+
+        /* Additional Styles for Hover Effects */
         .news:hover {
-            background-color: #f4f4f4; /* Light gray background on hover */
-            transform: scale(1.02); /* Slightly increase size */
+            background-color: #f4f4f4;
+            transform: scale(1.02);
+            transition: all 0.3s ease;
         }
 
-        /* Add active class for clicked state */
-        .news.active {
-            background-color: #c70039; /* Red color when clicked */
-            color: white; /* Text color change */
-        }
-
+        /* Styling for Register Form */
         .register-form {
-            display: none;
             background: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
             margin-top: 20px;
+            display: none; /* Hidden by default */
         }
 
-        .register-form input, .register-form button {
+        /* Show registration form when button is clicked */
+        .show-register-button:checked + .register-form {
+            display: block;
+        }
+
+        .register-form input, .register-form button, .register-form textarea {
             display: block;
             width: 100%;
             padding: 10px;
             margin-top: 10px;
             border-radius: 5px;
             border: 1px solid #ddd;
+        }
+
+        .register-form textarea {
+            height: 150px; /* Adjust the height for the message box */
+            resize: vertical; /* Allow users to resize the text area */
         }
 
         .register-form button {
@@ -145,13 +162,29 @@
             background: #c70039;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #333;
+        /* Read More Button */
+        .read-more {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            background-color: #ff5733;
             color: white;
-            margin-top: 20px;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
         }
+
+        .read-more:hover {
+            background-color: #c70039;
+        }
+
+        /* Hide checkbox inputs */
+        .show-register-button {
+            display: none;
+        }
+
     </style>
 </head>
 <body>
@@ -172,9 +205,11 @@
             </div>
         </div>
 
-        <!-- Content for each headline -->
-        <div class="news" onclick="toggleActive(this)">
-            <img src="Culturalfestival.jpeg" alt="Cultural Festival">
+        <!-- Content for each headline with clickable checkbox to change color -->
+        <div class="news">
+            <input type="checkbox" id="news1">
+            <label for="news1"></label>
+            <img src="image.jpeg" alt="Cultural Festival">
             <div class="content">
                 <h2>City Hosts Grand Cultural Festival</h2>
                 <p>The city is buzzing with excitement as the annual cultural festival kicks off this weekend. Attendees can enjoy various cultural performances, art exhibitions, food stalls, and interactive workshops.</p>
@@ -188,8 +223,10 @@
             </div>
         </div>
 
-        <div class="news" onclick="toggleActive(this)">
-            <img src="News.jpeg" alt="Political Shift">
+        <div class="news">
+            <input type="checkbox" id="news2">
+            <label for="news2"></label>
+            <img src="download.jpeg" alt="Political Shift">
             <div class="content">
                 <h2>Breaking News: Major Political Shift</h2>
                 <p>The nation witnesses a historic political shift as leaders announce significant policy changes aimed at economic growth and social welfare. Experts believe these changes will impact millions.</p>
@@ -202,7 +239,9 @@
             </div>
         </div>
 
-        <div class="news" onclick="toggleActive(this)">
+        <div class="news">
+            <input type="checkbox" id="news3">
+            <label for="news3"></label>
             <img src="sports.jpeg" alt="Sports Championship">
             <div class="content">
                 <h2>Sports: Local Team Wins Championship</h2>
@@ -216,39 +255,33 @@
             </div>
         </div>
 
-        <div class="news" onclick="toggleActive(this)">
-            <img src="festivalSeason.jpeg" alt="Festival Season">
+        <div class="news">
+            <input type="checkbox" id="news4">
+            <label for="news4"></label>
+            <img src="festival.jpeg" alt="Festival Season">
             <div class="content">
                 <h2>Festival Season Brings Joy to the City</h2>
                 <p>People gather in large numbers to celebrate the grand festivities with music, food, and fireworks. This year’s festival features street performances, cultural parades, and special discounts in local markets.</p>
             </div>
         </div>
 
-        <button class="read-more" onclick="showRegisterForm()">Read More</button>
-        <div id="register" class="register-form">
+        <!-- Read More Button -->
+        <label class="read-more" for="show-register">Read More</label>
+        <input type="checkbox" id="show-register" class="show-register-button">
+
+        <!-- Register Form -->
+        <div class="register-form">
             <h2>Register to Stay Updated</h2>
-            <input type="text" placeholder="Full Name" required>
-            <input type="email" placeholder="Email" required>
-            <button onclick="submitForm()">Submit</button>
+            <form action="#" method="post">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email" required>
+                <!-- Message Box (Textarea) -->
+                <textarea placeholder="Enter your message here..." required></textarea>
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </div>
+
     <footer>&copy; 2025 My News Hub | All Rights Reserved</footer>
-    <script>
-        // Toggle active class on news click
-        function toggleActive(element) {
-            element.classList.toggle('active');
-        }
-
-        function showRegisterForm() {
-            document.getElementById('register').style.display = 'block';
-            document.querySelector('.read-more').style.display = 'none';
-        }
-
-        function submitForm() {
-            alert("Registration Successful!");
-            document.getElementById('register').style.display = 'none';
-        }
-    </script>
 </body>
 </html>
-
