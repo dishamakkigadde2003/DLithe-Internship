@@ -147,7 +147,7 @@
             transition: background-color 0.3s ease;
         }
 
-        /* Registration Section & Read More Button Styles */
+        /* Registration Section */
         #registrationSection {
             display: none;
             margin: 20px auto;
@@ -158,17 +158,35 @@
             box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
             transition: opacity 0.3s ease;
         }
-        #readMore {
+
+        /* Hidden checkbox to toggle the form visibility */
+        #readMoreCheckbox {
+            display: none;
+        }
+
+        /* Show registration form when checkbox is checked */
+        #readMoreCheckbox:checked + #readMore + #registrationSection {
             display: block;
+        }
+
+        /* Style for the 'Read More' button */
+        #readMore {
+            display: inline-block;
             margin: 20px auto;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 5px;
         }
+
         #readMore:hover {
-            background-color: #d0ebff;
+            background-color: #00b4d8;
         }
+
         footer {
             text-align: center;
             padding: 25px;
@@ -264,8 +282,9 @@
             </tr>
         </table>
 
-        <!-- Read More Button -->
-        <button id="readMore">Read More</button>
+        <!-- Hidden checkbox to toggle the registration form -->
+        <input type="checkbox" id="readMoreCheckbox">
+        <label id="readMore" for="readMoreCheckbox">Read More</label>
 
         <!-- Registration Form -->
         <div id="registrationSection">
@@ -284,23 +303,5 @@
         </div>
     </div>
     <footer>&copy; 2025 Travel Agency | Explore, Dream, Discover</footer>
-
-    <script>
-        // Show registration form when "Read More" is clicked
-        document.getElementById('readMore').addEventListener('click', function() {
-            document.getElementById('registrationSection').style.display = 'block';
-            this.style.display = 'none';
-        });
-
-        // When the registration form is submitted, prevent default action,
-        // display an alert, and hide the registration form.
-        document.getElementById('regForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent actual form submission
-            document.getElementById('registrationSection').style.display = 'none';
-            alert('Registration Successful! Returning to main page.');
-            // Optionally, reset form fields:
-            this.reset();
-        });
-    </script>
 </body>
 </html>
