@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Agency</title>
-    <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
     <style>
         /* Internal CSS */
         body {
@@ -71,9 +71,9 @@
             border-bottom: 5px solid #005f87;
         }
         .destination img {
-            width: 100%; /* Make the image take up the full width of the container */
-            height: 250px; /* Set a fixed height for all images */
-            object-fit: cover; /* Ensure the image covers the area without stretching */
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
             border-radius: 7px;
             transition: transform 0.3s ease;
         }
@@ -104,15 +104,14 @@
             background-color: #0077b6;
             color: white;
         }
-        /* Custom Styles for Lists */
         ul {
-            list-style-type: none; /* Remove default bullets */
+            list-style-type: none;
             padding: 0;
             margin: 0;
         }
         ul li {
             position: relative;
-            padding-left: 30px; /* Space for custom bullet */
+            padding-left: 30px;
             margin-bottom: 12px;
             font-size: 16px;
             color: #333;
@@ -120,7 +119,7 @@
             line-height: 1.5;
         }
         ul li::before {
-            content: "✔"; /* Use a check mark as custom bullet */
+            content: "✔";
             position: absolute;
             left: 0;
             top: 0;
@@ -139,15 +138,12 @@
         }
         ol li::marker {
             font-size: 18px;
-            color: #00b4d8; /* Custom color for numbers */
+            color: #00b4d8;
         }
-        /* Hover Effect on List Items */
         ul li:hover, ol li:hover {
             background-color: #d0ebff;
             transition: background-color 0.3s ease;
         }
-
-        /* Registration Section */
         #registrationSection {
             display: none;
             margin: 20px auto;
@@ -158,35 +154,17 @@
             box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
             transition: opacity 0.3s ease;
         }
-
-        /* Hidden checkbox to toggle the form visibility */
-        #readMoreCheckbox {
-            display: none;
-        }
-
-        /* Show registration form when checkbox is checked */
-        #readMoreCheckbox:checked + #readMore + #registrationSection {
-            display: block;
-        }
-
-        /* Style for the 'Read More' button */
         #readMore {
-            display: inline-block;
+            display: block;
             margin: 20px auto;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            background-color: #0077b6;
-            color: white;
-            border: none;
-            border-radius: 5px;
         }
-
         #readMore:hover {
-            background-color: #00b4d8;
+            background-color: #d0ebff;
         }
-
         footer {
             text-align: center;
             padding: 25px;
@@ -207,7 +185,6 @@
             <p>Welcome to Travel Agency, where we craft the perfect travel experience just for you. Explore breathtaking landscapes, vibrant cities, and hidden gems across the world. Let’s make unforgettable memories together!</p>
         </div>
         
-        <!-- Unordered List (Things to Bring) -->
         <div class="intro">
             <h3>Things to Bring on Your Trip</h3>
             <ul>
@@ -220,29 +197,28 @@
         </div>
 
         <div class="destination-grid">
-            <div class="destination">
+            <div class="destination" id="california">
                 <img src="California.jpeg" alt="California">
                 <h2>California</h2>
                 <p>Golden beaches, vibrant cities, and stunning national parks await you in the Golden State.</p>
             </div>
-            <div class="destination">
+            <div class="destination" id="florida">
                 <img src="florida.jpeg" alt="Florida">
                 <h2>Florida</h2>
                 <p>Sunshine, theme parks, and breathtaking coastlines make Florida a must-visit destination.</p>
             </div>
-            <div class="destination">
+            <div class="destination" id="paris">
                 <img src="Paris.jpeg" alt="Paris">
                 <h2>Paris</h2>
                 <p>Experience the romance of Paris with its iconic landmarks, museums, and world-class cuisine.</p>
             </div>
-            <div class="destination">
+            <div class="destination" id="bali">
                 <img src="Bali.jpeg" alt="Bali">
                 <h2>Bali</h2>
                 <p>A tropical paradise known for its beaches, temples, and stunning natural beauty.</p>
             </div>
         </div>
 
-        <!-- Ordered List (Travel Tips) -->
         <div class="intro">
             <h3>Top Travel Tips</h3>
             <ol>
@@ -282,11 +258,8 @@
             </tr>
         </table>
 
-        <!-- Hidden checkbox to toggle the registration form -->
-        <input type="checkbox" id="readMoreCheckbox">
-        <label id="readMore" for="readMoreCheckbox">Read More</label>
+        <button id="readMore">Read More</button>
 
-        <!-- Registration Form -->
         <div id="registrationSection">
             <h2>Register Now</h2>
             <form id="regForm">
@@ -302,6 +275,56 @@
             </form>
         </div>
     </div>
+
     <footer>&copy; 2025 Travel Agency | Explore, Dream, Discover</footer>
+
+    <script>
+        // Data Types
+        let country = "USA"; // String
+        let price = 1250; // Number
+        let availableDestinations = ["California", "Florida", "Paris", "Bali"]; // Array
+        let isAvailable = true; // Boolean
+
+        // Function to log available destinations
+        function logDestinations(destinations) {
+            for (let i = 0; i < destinations.length; i++) {
+                console.log(destinations[i]);
+            }
+        }
+
+        // Calling the function
+        logDestinations(availableDestinations);
+
+        // Control Flow Example
+        if (price > 1000) {
+            console.log("This destination is above budget.");
+        } else {
+            console.log("This destination fits within the budget.");
+        }
+
+        // Event Listener
+        document.getElementById('readMore').addEventListener('click', function() {
+            document.getElementById('registrationSection').style.display = 'block';
+            this.style.display = 'none';
+            console.log("Read More button clicked");
+        });
+
+        // DOM Manipulation: Changing background color on hover
+        document.getElementById('florida').addEventListener('mouseover', function() {
+            this.style.backgroundColor = '#00b4d8';
+        });
+
+        document.getElementById('florida').addEventListener('mouseout', function() {
+            this.style.backgroundColor = '';
+        });
+
+        // Event Listener for Form Submission
+        document.getElementById('regForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Registration Successful! Returning to main page.');
+            this.reset();  // Reset the form fields
+            document.getElementById('registrationSection').style.display = 'none';
+        });
+    </script>
 </body>
 </html>
