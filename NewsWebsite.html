@@ -4,14 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My News Hub</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
+        /* Basic Reset */
+        * {
             margin: 0;
             padding: 0;
-            background-color: black;
+            box-sizing: border-box;
         }
 
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 0 20px;
+        }
+
+        /* Header Styling */
         .header {
             background: linear-gradient(to right, #ff5733, #c70039);
             color: white;
@@ -19,60 +28,72 @@
             text-align: center;
             font-size: 36px;
             font-weight: bold;
-            letter-spacing: 2px;
-            border-bottom: 5px solid #900c3f;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
 
+        .header span {
+            font-weight: normal;
+            font-size: 18px;
+        }
+
+        /* Container and Flex Layout for Headlines */
         .container {
-            width: 80%;
+            width: 100%;
+            max-width: 1200px;
             margin: auto;
-            padding: 20px;
         }
 
         .headlines {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
             margin-bottom: 30px;
         }
 
         .headline {
             background: white;
-            padding: 15px;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-            width: 22%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 1 1 22%;
+            min-width: 250px;
             text-align: center;
-            margin-right: 10px;
         }
 
-        .headlines .headline:last-child {
-            margin-right: 0;
+        .headline:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .headline h2 {
+            font-size: 22px;
             color: #222;
-            font-size: 20px;
-            margin: 0;
         }
 
         .headline p {
             color: #555;
             font-size: 14px;
-            line-height: 1.6;
             margin-top: 10px;
         }
 
+        /* News Section Styling */
         .news {
-            background: white;
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
             display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            position: relative;
-            cursor: pointer;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .news:hover {
+            background-color: #f4f4f4;
+            transform: scale(1.02);
         }
 
         .news img {
@@ -86,202 +107,185 @@
         }
 
         .news h2 {
-            color: #222;
             font-size: 22px;
+            color: #222;
             margin-bottom: 10px;
         }
 
         .news p {
-            color: #555;
             font-size: 14px;
+            color: #555;
             line-height: 1.8;
         }
 
-        ul, ol {
-            margin-top: 10px;
-            margin-left: 20px;
-            color: #555;
-        }
-
-        ul li, ol li {
-            margin-bottom: 5px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #333;
-            color: white;
-            margin-top: 20px;
-        }
-
-        /* Additional Styles for Hover Effects */
-        .news:hover {
-            background-color: #f4f4f4;
-            transform: scale(1.02);
-            transition: all 0.3s ease;
-        }
-
-        /* Styling for Register Form */
+        /* Registration Form Styling */
         .register-form {
+            display: none;
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
-            display: none; /* Hidden by default */
         }
 
-        /* Show registration form when button is clicked */
-        .show-register-button:checked + .register-form {
-            display: block;
-        }
-
-        .register-form input, .register-form button, .register-form textarea {
-            display: block;
+        .register-form input,
+        .register-form button {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-top: 10px;
             border-radius: 5px;
             border: 1px solid #ddd;
         }
 
-        .register-form textarea {
-            height: 150px; /* Adjust the height for the message box */
-            resize: vertical; /* Allow users to resize the text area */
-        }
-
         .register-form button {
-            background: #900c3f;
+            background-color: #c70039;
             color: white;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s ease;
         }
 
         .register-form button:hover {
-            background: #c70039;
+            background-color: #900c3f;
         }
 
-        /* Read More Button */
-        .read-more {
-            display: block;
-            width: 200px;
-            margin: 20px auto;
-            background-color: #ff5733;
-            color: white;
-            padding: 10px;
+        /* Footer Styling */
+        footer {
             text-align: center;
-            font-weight: bold;
-            border-radius: 5px;
-            text-decoration: none;
+            padding: 20px;
+            background: #333;
+            color: white;
+            margin-top: 40px;
+            border-radius: 10px;
         }
 
-        .read-more:hover {
-            background-color: #c70039;
-        }
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .headlines {
+                flex-direction: column;
+                align-items: center;
+            }
 
-        /* Hide checkbox inputs */
-        .show-register-button {
-            display: none;
-        }
+            .headline {
+                flex: 1 1 100%;
+                margin-bottom: 20px;
+            }
 
+            .news {
+                flex-direction: column;
+            }
+
+            .news img {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .news .content {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="header">My News Hub</div>
+    <div class="header">
+        My News Hub
+        <span>Stay informed with the latest news from around the world.</span>
+    </div>
+
     <div class="container">
-        <div class="headlines">
-            <div class="headline">
-                <h2>City Hosts Grand Cultural Festival</h2>
-            </div>
-            <div class="headline">
-                <h2>Breaking News: Major Political Shift</h2>
-            </div>
-            <div class="headline">
-                <h2>Sports: Local Team Wins Championship</h2>
-            </div>
-            <div class="headline">
-                <h2>Festival Season Brings Joy to the City</h2>
-            </div>
+        <!-- Headlines Section -->
+        <div class="headlines" id="headlines">
+            <!-- Headlines will be injected dynamically here -->
         </div>
 
-        <!-- Content for each headline with clickable checkbox to change color -->
-        <div class="news">
-            <input type="checkbox" id="news1">
-            <label for="news1"></label>
-            <img src="image.jpeg" alt="Cultural Festival">
-            <div class="content">
-                <h2>City Hosts Grand Cultural Festival</h2>
-                <p>The city is buzzing with excitement as the annual cultural festival kicks off this weekend. Attendees can enjoy various cultural performances, art exhibitions, food stalls, and interactive workshops.</p>
-                <h3>Event Highlights:</h3>
-                <ul>
-                    <li>Cultural Performances</li>
-                    <li>Art Exhibitions</li>
-                    <li>Interactive Workshops</li>
-                    <li>Food Stalls</li>
-                </ul>
-            </div>
+        <!-- News Articles Section -->
+        <div id="news-articles">
+            <!-- Articles will be injected dynamically here -->
         </div>
 
-        <div class="news">
-            <input type="checkbox" id="news2">
-            <label for="news2"></label>
-            <img src="download.jpeg" alt="Political Shift">
-            <div class="content">
-                <h2>Breaking News: Major Political Shift</h2>
-                <p>The nation witnesses a historic political shift as leaders announce significant policy changes aimed at economic growth and social welfare. Experts believe these changes will impact millions.</p>
-                <h3>Key Changes:</h3>
-                <ol>
-                    <li>New Taxation Policies</li>
-                    <li>Healthcare Reform</li>
-                    <li>Educational Investments</li>
-                </ol>
-            </div>
-        </div>
+        <!-- Registration Form Button -->
+        <button class="read-more" onclick="showRegisterForm()">Register for Updates</button>
 
-        <div class="news">
-            <input type="checkbox" id="news3">
-            <label for="news3"></label>
-            <img src="sports.jpeg" alt="Sports Championship">
-            <div class="content">
-                <h2>Sports: Local Team Wins Championship</h2>
-                <p>The home team secured a thrilling victory in the finals, marking a memorable moment for fans. After a season full of intense matches, the team demonstrated outstanding teamwork and determination.</p>
-                <h3>Celebration Events:</h3>
-                <ul>
-                    <li>Victory Parade</li>
-                    <li>City-Wide Celebrations</li>
-                    <li>Fan Meet & Greet</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="news">
-            <input type="checkbox" id="news4">
-            <label for="news4"></label>
-            <img src="festival.jpeg" alt="Festival Season">
-            <div class="content">
-                <h2>Festival Season Brings Joy to the City</h2>
-                <p>People gather in large numbers to celebrate the grand festivities with music, food, and fireworks. This year’s festival features street performances, cultural parades, and special discounts in local markets.</p>
-            </div>
-        </div>
-
-        <!-- Read More Button -->
-        <label class="read-more" for="show-register">Read More</label>
-        <input type="checkbox" id="show-register" class="show-register-button">
-
-        <!-- Register Form -->
-        <div class="register-form">
+        <!-- Registration Form -->
+        <div id="register" class="register-form">
             <h2>Register to Stay Updated</h2>
-            <form action="#" method="post">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email" required>
-                <!-- Message Box (Textarea) -->
-                <textarea placeholder="Enter your message here..." required></textarea>
-                <button type="submit">Submit</button>
-            </form>
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <button onclick="submitForm()">Submit</button>
         </div>
     </div>
 
     <footer>&copy; 2025 My News Hub | All Rights Reserved</footer>
+
+    <script>
+        // Simulating API data (can replace with real API calls)
+        const headlinesData = [
+            { title: "City Hosts Grand Cultural Festival", summary: "The city is buzzing with excitement as the annual cultural festival kicks off this weekend." },
+            { title: "Breaking News: Major Political Shift", summary: "The nation witnesses a historic political shift with significant changes in policy." },
+            { title: "Sports: Local Team Wins Championship", summary: "The home team secured a thrilling victory, marking a memorable moment for fans." },
+            { title: "Festival Season Brings Joy to the City", summary: "People gather in large numbers to celebrate the grand festivities with music, food, and fireworks." }
+        ];
+
+        const articlesData = [
+            { title: "City Hosts Grand Cultural Festival", image: "image.jpeg", content: "The city is buzzing with excitement as the annual cultural festival kicks off. Attendees can enjoy cultural performances, art exhibitions, food stalls, and workshops." },
+            { title: "Breaking News: Major Political Shift", image: "download.jpeg", content: "The nation is experiencing a historic political shift, with leaders announcing new policies aimed at economic growth." },
+            { title: "Sports: Local Team Wins Championship", image: "sports.jpeg", content: "After a thrilling season, the local team won the championship, and the city is celebrating their victory." },
+            { title: "Festival Season Brings Joy to the City", image: "festival.jpeg", content: "This year's festival features street performances, cultural parades, and discounts in local markets." }
+        ];
+
+        // Dynamically populate headlines
+        function loadHeadlines() {
+            const headlinesContainer = document.getElementById('headlines');
+            headlinesContainer.innerHTML = '';
+            headlinesData.forEach((item, index) => {
+                const headlineDiv = document.createElement('div');
+                headlineDiv.classList.add('headline');
+                headlineDiv.innerHTML = `
+                    <h2>${item.title}</h2>
+                    <p>${item.summary}</p>
+                `;
+                headlineDiv.addEventListener('click', () => loadArticle(index));
+                headlinesContainer.appendChild(headlineDiv);
+            });
+        }
+
+        // Dynamically load full article content
+        function loadArticle(index) {
+            const newsArticlesContainer = document.getElementById('news-articles');
+            const article = articlesData[index];
+            newsArticlesContainer.innerHTML = `
+                <div class="news">
+                    <img src="${article.image}" alt="${article.title}">
+                    <div class="content">
+                        <h2>${article.title}</h2>
+                        <p>${article.content}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Show registration form
+        function showRegisterForm() {
+            document.getElementById('register').style.display = 'block';
+            document.querySelector('.read-more').style.display = 'none';
+        }
+
+        // Handle form submission
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            if (name && email) {
+                alert(`Thank you for registering, ${name}!`);
+                document.getElementById('register').style.display = 'none';
+            } else {
+                alert('Please fill in both fields.');
+            }
+        }
+
+        // Initial setup on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHeadlines();
+        });
+    </script>
 </body>
 </html>
